@@ -1,0 +1,10 @@
+scikit-learn==1.3.0
+torch==2.2.1+cu118
+torchvision==0.17.1+cu118
+torchaudio==2.2.1+cu118
+pytorchvideo==0.1.5
+decord==0.6.0
+av==12.3.0
+opencv-python==4.11.0.86
+Pillow==10.2.0
+visdom==0.2.4
