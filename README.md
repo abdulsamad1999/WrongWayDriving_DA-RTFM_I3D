@@ -79,6 +79,21 @@ WrongWayDriving_DA-RTFM_I3D/
 
 ## Usage
 
+---
+
+## Flow Feature Extraction
+
+Extract flow features using (only if you are using a custom dataset):
+
+```bash
+python extract_flow_features.py \
+  --list list/mytest.list \
+  --video-root ..\dataset \
+  --suffix _flow \
+  --num-segments 32 \
+  --theta-ref-file theta_ref.json
+```
+
 ### Training (Max Safety Run)
 
 ```bash
@@ -137,21 +152,6 @@ python test_safety_alerting.py \
   --model-path runs_max_safety/ckpt/rtfm_nosparse_best.pkl
 ```
 
----
-
-## Flow Feature Extraction
-
-Extract flow features using:
-
-```bash
-python extract_flow_features.py \
-  --list list/mytest.list \
-  --video-root ..\dataset \
-  --suffix _flow \
-  --num-segments 32 \
-  --theta-ref-file theta_ref.json
-```
-
 > If you are on Linux/macOS, you may want to replace `..\dataset` with a POSIX path (e.g., `../dataset`).
 
 ---
@@ -163,4 +163,5 @@ python extract_flow_features.py \
 * **Visualization not working:** Confirm the service at `http://localhost:8097` is running and reachable.
 
 ---
+
 
