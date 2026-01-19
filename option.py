@@ -1,6 +1,6 @@
 import argparse
 
-parser = argparse.ArgumentParser(description='RTFM (Wrong-way driving)')
+parser = argparse.ArgumentParser(description='DA-RTFM (Wrong-way driving)')
 
 # Core / legacy arguments
 parser.add_argument('--feat-extractor', default='i3d', choices=['i3d', 'c3d'])
