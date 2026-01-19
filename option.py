@@ -17,7 +17,7 @@ parser.add_argument('--dataset', default='wrongway-dataset', help='Dataset name 
 parser.add_argument('--plot-freq', type=int, default=10, help='Logging frequency')
 parser.add_argument('--max-epoch', type=int, default=100, help='Number of training epochs')
 
-# Feature lists (each line: "<path_to_rgb_feature.npy> <label>")
+# Feature lists
 parser.add_argument('--rgb-list', default='list/mytrain.list', help='Training list file')
 parser.add_argument('--test-rgb-list', default='list/mytest.list', help='Testing list file')
 
@@ -25,7 +25,6 @@ parser.add_argument('--test-rgb-list', default='list/mytest.list', help='Testing
 parser.add_argument('--feature-size', type=int, default=1024, help='RGB feature dimension per segment')
 parser.add_argument('--num-segments', type=int, default=32, help='Number of temporal segments per video')
 
-# ---------------- Supervisor-required methodology additions ----------------
 # Flow feature fusion
 parser.add_argument('--use-flow', action='store_true',
                     help='Concatenate per-segment optical-flow features (u,v,mag,D) to RGB features')
@@ -40,7 +39,7 @@ parser.add_argument('--lambda-temp', type=float, default=0.0,
 parser.add_argument('--temp-on-all', action='store_true',
                     help='If set, apply temporal smoothness to both normal and abnormal; otherwise normal-only')
 
-# Direction-opposition penalty (normal-only, per supervisor wording)
+# Direction-opposition penalty (normal-only)
 parser.add_argument('--lambda-dir', type=float, default=0.0,
                     help='Weight for direction-opposition penalty on NORMAL videos only')
 parser.add_argument('--dir-margin', type=float, default=0.0,
@@ -54,10 +53,6 @@ parser.add_argument('--lambda-score-smooth', type=float, default=0.0,
 parser.add_argument('--split-by-label', action='store_true',
                     help='Split train list into normal/anomaly loaders using the label column (required for GTA5 lists)')
 
-# Disable visdom
-parser.add_argument('--no-viz', action='store_true', help='Disable visdom/Visualizer (recommended for headless runs)')
-
-
 # Reproducibility
 parser.add_argument('--seed', type=int, default=123, help='Random seed for numpy/torch/python')
 parser.add_argument('--deterministic', action='store_true', help='Enable deterministic CuDNN (may reduce speed)')
@@ -69,6 +64,8 @@ parser.add_argument('--output-dir', type=str, default='.', help='Base directory 
 parser.add_argument('--viz-env', type=str, default=None, help='Visdom environment name (defaults to <dataset>-<model_name>)')
 parser.add_argument('--viz-server', type=str, default='http://localhost', help='Visdom server URL')
 parser.add_argument('--viz-port', type=int, default=8097, help='Visdom server port')
+# Disable visdom
+parser.add_argument('--no-viz', action='store_true', help='Disable visdom/Visualizer (recommended for headless runs)')
 
 # Temporal smoothness normalization
 parser.add_argument('--temp-norm-dim', action='store_true',
